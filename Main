@@ -1,0 +1,31 @@
+package ejercicios;
+
+
+public class Main {
+     public static void main(String[] args) {
+        
+        Arbol arbol=new Arbol ();
+        arbol.Agregar(arbol.getRaiz(), "Ana", 1997);
+        
+        arbol.Agregar(arbol.getRaiz(), "Roberto", 1982);
+        arbol.Agregar(arbol.getRaiz(), "Cristal", 1993);
+        arbol.Agregar(arbol.getRaiz(), "Gustavo", 1986);
+        arbol.Agregar(arbol.getRaiz(), "Martha", 1990);
+        arbol.Agregar(arbol.getRaiz(), "Fernando", 1981);
+        arbol.Agregar(arbol.getRaiz(), "Carmen", 1970);
+        arbol.Agregar(arbol.getRaiz(), "Joseline", 2003);
+        arbol.Agregar(arbol.getRaiz(), "Alicia", 2009);
+        arbol.Agregar(arbol.getRaiz(), "Cesar", 2005);
+        arbol.Agregar(arbol.getRaiz(), "Ramiro", 2001);
+        arbol.Agregar(arbol.getRaiz(), "Lalo", 2002);
+       
+         System.out.println("Persona mas pequena y edad:");
+         System.out.println("Persona mas grande"+arbol.EdadMaxima());
+         System.out.println("");
+         System.out.println("Mostrar en Pre-Orden:");
+         arbol.inOrden(arbol.getRaiz());
+         System.out.println("");
+         System.out.println("Mostrar en In-Orden:");
+         arbol.preOrden(arbol.getRaiz());
+    }
+}
