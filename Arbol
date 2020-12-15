@@ -1,0 +1,98 @@
+package ejercicios;
+
+
+public class Arbol {
+     private Nodo raiz;
+    private int totalNodos;
+    
+    public Arbol (){
+        raiz = null;
+        totalNodos = 0;
+    }
+    
+    public boolean EstaVacio(){
+        return raiz == null;
+    }
+    
+    public void Agregar (Nodo r, String nombre, int num){
+        Nodo nuevo = new Nodo(num, nombre);
+        if (EstaVacio()){
+            raiz = nuevo;
+            
+        }else if (num <=r.getEdad()){
+            if (r.getIzq()==null){
+                r.setIzq(nuevo);
+                totalNodos++;
+            } else {Agregar (r.getIzq(),nombre, num);
+            }
+        } else {
+            if (r.getDer() == null){
+                r.setDer(nuevo);
+                totalNodos++;
+            } else {
+                Agregar (r.getDer(),nombre, num);            
+            }
+        }
+    }
+    
+    public Nodo EdadMaxima (){
+        Nodo max;
+        max =BuscarMinimo(raiz);
+        return max;
+    }
+
+    private Nodo BuscarMaximo(Nodo r) {
+        if (r.getDer()!=null){
+            r=BuscarMaximo (r.getDer());
+        } else if (r.getIzq()!=null){
+            r = BuscarMinimo (r.getIzq());
+        } else if (r == null){
+            return null;
+        }
+        return r;
+    }
+    
+     public Nodo EdadMinima (){
+        Nodo min;
+        min =BuscarMaximo(raiz);
+        return min;
+    }
+     
+     private Nodo BuscarMinimo (Nodo r){
+         if (r.getIzq()!=null){
+             r = BuscarMinimo(r.getIzq());
+         } else if(r.getDer()!=null){
+             r=BuscarMinimo(r.getDer());
+         } else if(r==null) {
+             return null;
+         }
+         return r;
+     }
+     
+     public Nodo getRaiz(){
+         return raiz;
+     }
+     
+     public int gettotalNodos(){
+         return totalNodos;
+     }
+     
+     public void inOrden (Nodo r){
+         if (r!=null){
+             inOrden (r.getIzq());
+             System.out.println(r);
+             inOrden(r.getDer());
+         }
+     }
+     
+     public void preOrden (Nodo r){
+         if (r!=null){
+             preOrden(r.getIzq());
+             preOrden(r.getDer());
+             System.out.println(r);
+         }
+     }
+     
+     
+    
+}
